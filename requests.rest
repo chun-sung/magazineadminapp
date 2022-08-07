@@ -1,0 +1,51 @@
+### JWT 토큰 전송
+GET http://localhost:3000/posts
+Authorization: Bearer
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJuYW1lIjoiSmltIiwiaWF0IjoxNjU5Mjg1NTAzLCJleHAiOjE2NTkyODY0MDMsImlzcyI6InNwcmluZ3N0YXIifQ.QiN78IINEKEaUGE3kcFjvawVAlC7GQnhAazw5xz9dP0
+
+
+#######
+POST http://localhost:3000/articles/create
+Content-Type: application/json
+
+{
+  "username": "Jim"
+}
+###############################################################################
+
+### 전체게시글 조회
+GET http://localhost:3000/api/articles/list
+
+
+### 단일 게시글 조회
+GET http://localhost:3000/api/articles/3
+
+
+### 코멘트 조회 SP(저장프로시저)
+GET http://localhost:3000/api/articles/comment?idx=2
+
+
+### 게시글 작성
+POST http://localhost:3000/api/articles/create
+Content-Type: application/json
+
+{
+  "board_idx": "1",
+  "title": "이현세",
+  "contents": "천국은 이현세 가는 곳이 아니다",
+  "regist_userid": "sprignstar"
+} 
+
+
+### 게시글 수정 (회신결과는 정상적으로 받아오나 *DB데이터 변경 안됨)
+POST http://localhost:3000/api/articles/update?idx=65
+
+{   
+  "title": "이현세",
+  "contents": "이현세 천국의 신화",
+  "display_yn": "N",
+  "modify_userid": "ADMIN_API"
+}
+
+### 게시글 삭제
+GET  http://localhost:3000/api/articles/delete?idx=75
